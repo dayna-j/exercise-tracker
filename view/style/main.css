@@ -1,9 +1,3 @@
-body {
-  height: 100vh;
-  width: 100%;
-  margin: 0;
-  padding: 0; }
-
 html {
   box-sizing: border-box; }
 
@@ -15,3 +9,58 @@ html {
 
 .noSelect {
   user-select: none; }
+
+body {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: fuchsia;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("https://pixabay.com/get/ec33b10b2bf11c22d9584518a34b4794e575ebd204b014429df8c178a1eab4/bench-560435_1920.jpg") no-repeat center center fixed;
+  background-size: cover; }
+  body #bg-filter {
+    position: relative;
+    width: 97%;
+    height: 97%;
+    background-color: #d8bdbd;
+    opacity: .95;
+    filter: blur(7px); }
+
+.container {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  background-color: black; }
+
+#row1 {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  background-color: red;
+  z-index: 5554564; }
+  #row1 .panel {
+    width: 50%;
+    height: 100%; }
+  #row1 #rightPanel {
+    background-color: green; }
+  #row1 #leftPanel {
+    background-color: palegreen; }
+
+#row2 {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  background-color: aquamarine; }
