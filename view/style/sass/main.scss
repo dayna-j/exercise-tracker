@@ -1,6 +1,23 @@
-$badass: #bada55;
-
 body { 
+  height: 100vh;
+  width: 100%;
   margin: 0; 
-  background-color: $badass; 
+  padding: 0;
 }
+
+html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  .hidden{
+    display: none;
+  }
+  
+  .noSelect{
+    user-select: none;
+  }
+  
