@@ -6,6 +6,12 @@ html {
     box-sizing: inherit;
   }
 
+  h1{
+    padding: 0;
+    margin: 0;
+
+  }
+
   .hidden{
     display: none;
   }
@@ -26,17 +32,16 @@ html {
     align-items: center;
     background: url('https://pixabay.com/get/ec33b10b2bf11c22d9584518a34b4794e575ebd204b014429df8c178a1eab4/bench-560435_1920.jpg') no-repeat center center fixed;
     background-size: cover;
+  }
 
-
-    #bg-filter{
-      position: relative;
-      width: 97%;
-      height: 97%;
-      background-color: #d8bdbd;
-      // background-color: #272727;
-      opacity: .95;
-      filter: blur(7px);
-    }
+  #bg-filter{
+    position: relative;
+    width: 97%;
+    height: 97%;
+    background-color: #d8bdbd;
+    // background-color: #272727;
+    opacity: .95;
+    filter: blur(7px);
   }
 
   .container {
@@ -46,7 +51,7 @@ html {
     position: absolute;
     width: 95%;
     height: 95%;
-    background-color: black;
+    // background-color: black;
     // padding: 10px;
   }
 
@@ -57,23 +62,68 @@ html {
     align-items: center;
     width: 100%;
     height: 50%;
-    background-color:red;
-    z-index: 5554564;
+    // background-color:red;
 
     .panel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 50%;
       height: 100%;
-    }
+      // border: 2px solid red;
+}
 
     #rightPanel {
-      background-color: green;
+      // background-color: green;
     }
 
     #leftPanel {
-      background-color: palegreen;
+      // background-color: palegreen;
+
+      form {
+
+        input {
+          width: 100%;
+          display: block;
+          
+        }
+        
+        input[type='submit'] {
+          height: 30px;
+        }
+      }
     }
   
   }
+
+  .formWrapper {
+    // position: absolute;
+    // padding: 0;
+    // margin: 0;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // background-color: darkgoldenrod;
+    height: 80%;
+    width: 80%;
+
+    form{
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      background-color: #505050;
+      code{
+        display: table;
+        margin: auto;
+        background-color: #a38f8f
+      }
+
+      h1{
+        text-align: center;
+        // margin-bottom: 50px;
+      }
+    }
+  }  
   
 
 
@@ -85,7 +135,8 @@ html {
   align-items: center;
   width: 100%;
   height: 50%;
-  background-color: aquamarine;
+  background-color: #9b8787;
+  border: 2px solid red;
   
 }
  
