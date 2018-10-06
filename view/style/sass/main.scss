@@ -40,8 +40,8 @@ html {
     height: 97%;
     background-color: #d8bdbd;
     // background-color: #272727;
-    opacity: .95;
-    filter: blur(7px);
+    opacity: .80;
+    filter: blur(15px);
   }
 
   .container {
@@ -51,7 +51,8 @@ html {
     position: absolute;
     width: 95%;
     height: 95%;
-    // background-color: black;
+    opacity: .9;
+    background-color: black;
     // padding: 10px;
   }
 
@@ -75,6 +76,9 @@ html {
 
     #rightPanel {
       // background-color: green;
+      form {
+
+      }
     }
 
     #leftPanel {
@@ -82,28 +86,13 @@ html {
 
       form {
 
-        input {
-          width: 100%;
-          display: block;
-          
-        }
         
-        input[type='submit'] {
-          height: 30px;
-        }
       }
     }
   
   }
 
   .formWrapper {
-    // position: absolute;
-    // padding: 0;
-    // margin: 0;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // background-color: darkgoldenrod;
     height: 80%;
     width: 80%;
 
@@ -112,16 +101,27 @@ html {
       height: 100%;
       padding: 15px;
       background-color: #505050;
+      h1{
+        text-align: center;
+        margin-bottom: 25px;
+      }
       code{
         display: table;
         margin: auto;
-        background-color: #a38f8f
+        background-color: #a38f8f;
+        margin-bottom: 5px; 
+      }
+      input {
+        width: 100%;
+        display: block;
+        margin-top: 10px;
+        height: 25px;
+      }
+      input[type='submit'] {
+        height: 30px;
       }
 
-      h1{
-        text-align: center;
-        // margin-bottom: 50px;
-      }
+      
     }
   }  
   
@@ -132,12 +132,28 @@ html {
   bottom: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   width: 100%;
   height: 50%;
   background-color: #9b8787;
-  border: 2px solid red;
+  // border: 2px solid red;
   
+  #bottomPanel{
+    
+    #instructionsWrapper{
+      background-color: cornsilk;
+      h1 {
+
+      }
+
+      ul li {
+        
+      }
+
+
+    }
+
+  }
 }
  
 
