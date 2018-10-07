@@ -6,7 +6,9 @@ html {
 
 h1 {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  font-family: sans-serif;
+  color: ghostwhite; }
 
 .hidden {
   display: none; }
@@ -19,7 +21,6 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: fuchsia;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -32,7 +33,7 @@ body {
   width: 97%;
   height: 97%;
   background-color: #d8bdbd;
-  opacity: .80;
+  opacity: .70;
   filter: blur(15px); }
 
 .container {
@@ -76,9 +77,19 @@ body {
       width: 100%;
       display: block;
       margin-top: 10px;
-      height: 25px; }
+      height: 35px;
+      outline: none;
+      border: none; }
+    .formWrapper form input[type='text'] {
+      background-color: #dad3cd;
+      padding: 5px; }
     .formWrapper form input[type='submit'] {
-      height: 30px; }
+      height: 30px;
+      background-color: #D8BDBD;
+      cursor: pointer;
+      transition: all .5s; }
+      .formWrapper form input[type='submit']:hover {
+        background-color: #B69090; }
 
 #row2 {
   position: absolute;
@@ -96,7 +107,9 @@ body {
         width: 100%;
         text-align: center; }
       #row2 #bottomPanel #instructionsWrapper ul {
+        list-style: circle;
         display: block; }
       #row2 #bottomPanel #instructionsWrapper ul li {
         line-height: 1.3em;
-        margin-bottom: 10px; }
+        margin-bottom: 10px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; }
