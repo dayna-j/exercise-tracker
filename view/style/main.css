@@ -25,7 +25,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("https://pixabay.com/get/e831b20f29f4043ecd1f4204e44a449fe46ae3d01ab9194893f3c07f/triangles-1430105.png") no-repeat center center fixed;
+  background: url("https://pixabay.com/get/e831b20f29f4043ecd1f4204e44a449fe46ae3d01ab918429df6c87e/triangles-1430105.png") no-repeat center center fixed;
   background-size: cover; }
 
 #bg-filter {
@@ -65,7 +65,8 @@ body {
     width: 100%;
     height: 100%;
     padding: 15px;
-    background-color: #1d4246a6; }
+    background-color: #1d4246a6;
+    border-radius: 15px; }
     .formWrapper form h1 {
       text-align: center;
       margin-bottom: 25px; }
