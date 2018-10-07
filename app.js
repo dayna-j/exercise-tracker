@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const sass = require('node-sass');
+// const sass = require('node-sass');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 
