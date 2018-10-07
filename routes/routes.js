@@ -1,9 +1,13 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
+const bodyParser = require('body-parser');
 
 const log = msg => console.log(msg);
-let users = [];
+let users = ['a user'];
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/public', express.static(process.cwd() + '/view'));
 
