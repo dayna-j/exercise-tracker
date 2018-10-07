@@ -30,7 +30,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('https://pixabay.com/get/ec33b10b2bf11c22d9584518a34b4794e575ebd204b014429df8c178a1eab4/bench-560435_1920.jpg') no-repeat center center fixed;
+    background: url('https://pixabay.com/get/e831b20f29f4043ecd1f4204e44a449fe46ae3d01ab9194893f3c07f/triangles-1430105.png') no-repeat center center fixed;
     background-size: cover;
   }
 
@@ -52,7 +52,7 @@ html {
     width: 95%;
     height: 95%;
     opacity: .9;
-    background-color: black;
+    // background-color: black;
     // padding: 10px;
   }
 
@@ -84,7 +84,7 @@ html {
       width: 100%;
       height: 100%;
       padding: 15px;
-      background-color: #505050;
+      background-color: #1d4246a6;
       h1{
         text-align: center;
         margin-bottom: 25px;
@@ -93,7 +93,6 @@ html {
         display: table;
         margin: auto;
         background-color: #a38f8f;
-        margin-bottom: 5px; 
       }
       input {
         width: 100%;
@@ -117,7 +116,7 @@ html {
   // align-items: center;
   width: 100%;
   height: 50%;
-  background-color: #9b8787;
+  // background-color: #9b8787;
   // border: 2px solid red;
   
   #bottomPanel{
@@ -127,14 +126,17 @@ html {
     
     #instructionsWrapper{
       // display: flex;
-      // justify-content: center;
+      // flex-direction: column;
+      // justify-content: flex-start;
+      // align-items: center;
+      
       height: 100%;
       width: 100%;
-      background-color: rgb(91, 31, 110);
+      // background-color: rgb(91, 31, 110);
       
       h1 {
         // display: block;
-        background-color: whitesmoke;
+        // background-color: whitesmoke;
         width: 100%;
         text-align: center;
         // height: auto;
@@ -149,7 +151,9 @@ html {
       }
 
       ul li {
-        // display: block;
+        line-height: 1.3em;
+        // text-align: center;
+        margin-bottom: 10px;
       }
 
 

@@ -13,7 +13,7 @@
         <div class='row' id='row1'>
             <div class = 'panel' id='leftPanel'>
                 <div class='formWrapper'>
-                    <form>
+                    <form action = "/api/exercise/new-user" method = "post">
                         <h1>Create a New User</h1>
                         <code>POST /api/exercise/new-user</code>
                         <input id='userInput' type='text' placeholder="Enter Username">
@@ -23,7 +23,7 @@
             </div> 
             <div class = 'panel' id='rightPanel'>
                 <div class='formWrapper'>
-                    <form>
+                    <form action = "/api/exercise/add" method = "post">
                         <h1>Add Exercises</h1>
                         <code>POST /api/exercise/add</code>
                         <input type='text' placeholder="userId">
@@ -40,13 +40,17 @@
                 <div id='instructionsWrapper'>
                     <h1>exercise-tracker restFUL API</h1>
                     <ul>
-                        <li>I can create a user by posting form data username to /api/exercise/new-user and returned will be an object with username and _id.</li>
-                        <li>I can get an array of all users by getting api/exercise/users with the same info as when creating a user.</li>
-                        <li>I can add an exercise to any user by posting form data userId(_id), description, duration, 
-                            and optionally date to /api/exercise/add. If no date supplied it will use current date. Returned will the the user object with
-                             also with the exercise fields added.</li>
-                        <li>I can retrieve a full exercise log of any user by getting /api/exercise/log with a parameter of userId(_id). Return will be the user object with added array log and count (total exercise count).</li>
-                        <li>I can retrieve part of the log of any user by also passing along optional parameters of from & to or limit. (Date format yyyy-mm-dd, limit = int)</li>
+                        <li>A user can be created by POSTing to <code>/api/exercise/new-user</code>.  An object will be returned with 2 properties:  username & _id.</li>
+                        
+                        <li>A list of all users can be retrieved by sending a GET request to <code>/api/exercise/users</code></li>
+                        
+                        <li>You can add an exercise to any users record by POSTing form data (userId, description, duration (mins), date (yy-mm-dd) to /api/exercise/add.
+                            If no date is given, current date will be used.  A user object will be returned with the exercise fields added.</li>
+                        
+                        <li>A full exercise log of any user can be retrieved by sending a GET request to /api/exercise/log with a parameter of userId(_id). 
+                            An object will be returned with the exercise log for that user.</li>
+                        
+                        <li>You can retrieve a partial log any user by also passing along optional parameters of from, to or limit.</li>
                     </ul>
                 </div>
             </div>
