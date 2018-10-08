@@ -26,7 +26,8 @@ body {
   justify-content: center;
   align-items: center;
   background: url("https://pixabay.com/get/e831b20f29f4043ecd1f4204e44a449fe46ae3d01ab918479cf5c278/triangles-1430105.png") no-repeat center center fixed;
-  background-size: cover; }
+  background-size: cover;
+  border: 5px solid #8b7ed3; }
 
 #bg-filter {
   position: relative;
