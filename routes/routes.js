@@ -27,7 +27,6 @@ router.post('/api/exercise/new-user', (req,res) => {
         _id: shortid.generate()
     }
     users.push(userObj);
-
     res.end(JSON.stringify(userObj));
 });
 
