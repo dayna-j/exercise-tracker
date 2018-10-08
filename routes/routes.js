@@ -6,8 +6,8 @@ const shortid = require('shortid');
 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 const log = msg => console.log(msg);
-
-let users = ['a user'];
+// should be an array of objects.  username:  name, userID: id
+let users = [];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,9 +22,13 @@ router.get('/api/exercise/log/:id', (req,res) => {
 
 router.post('/api/exercise/new-user', (req,res) => {
     let username = req.body.username;
-    users.push(username);
-    
-    res.end('end');
+    let userObj = {
+        username: username,
+        _id: shortid.generate()
+    }
+    users.push(userObj);
+
+    res.end(JSON.stringify(userObj));
 });
 
 router.post('/api/exercise/add', (req,res) => {

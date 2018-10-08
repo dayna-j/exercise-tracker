@@ -35,7 +35,8 @@ body {
   height: 97%;
   background-color: #d8bdbd;
   opacity: .70;
-  filter: blur(15px); }
+  filter: blur(11px);
+  border-radius: 5px; }
 
 .container {
   display: flex;
