@@ -6,10 +6,11 @@ const shortid = require('shortid');
 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 const log = msg => console.log(msg);
+
 let users = ['a user'];
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/api/exercise/users' , (req,res) => {
     res.send(users);
@@ -20,6 +21,9 @@ router.get('/api/exercise/log/:id', (req,res) => {
 });
 
 router.post('/api/exercise/new-user', (req,res) => {
+    let username = req.body.username;
+    users.push(username);
+    
     res.end('end');
 });
 

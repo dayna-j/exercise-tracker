@@ -12,7 +12,6 @@ const log = msg => console.log(msg);
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(require('./routes/routes.js'))
 
 app.use('/', express.static(process.cwd() + '/view'));
