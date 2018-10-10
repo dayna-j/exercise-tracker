@@ -3,13 +3,11 @@ const express = require('express');
 const app = express();
 
 const mongoose = require('mongoose');
-const db = process.env.MONGO_URL;
-const mongoose = require('mongoose');
 
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
-
+const db = process.env.MONGO_URL;
 const port = process.env.PORT || 3000;
 const log = msg => console.log(msg);
 
@@ -24,5 +22,9 @@ app.use('/', express.static(process.cwd() + '/view'));
 app.get('/', (req,res) => {
     res.sendFile(process.cwd() + '/view/index.html');
 });
+
+mongoose.connect(db, { useNewUrlParser: true })
+    .then(log('Connected to mongo server..'))
+    .catch(err=>log(err))
 
 app.listen(port, () => console.log(`server started on port ${port}`));
