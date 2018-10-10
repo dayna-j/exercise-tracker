@@ -3,6 +3,7 @@ const app = express();
 const router = express.Router();
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
+const mongoos = require('mongoose');
 // const mongodb = require('mongodb');
 // User model for mongo database
 
@@ -30,15 +31,13 @@ router.get('/api/exercise/log/:id', (req,res) => {
     const query = User.where({userId: userId})
     query.findOne( (err,user) => {
         if (err) return err;
-        if (user.exercises) {
-            res.json(user.exercises);
+        if (user.exercise.length != 0) {
+            // there are exercises logged for this user
+            res.json(user.exercise);
         } else {
             res.end('user not found / user has not logged any exercise');
         }
     });
-    
-    
-    // res.end('end');
 });
 
 router.post('/api/exercise/new-user', (req,res) => {
