@@ -30,7 +30,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('https://pixabay.com/get/e831b20f29f4043ed1584d05fb094197e171e0dc1eac104496f9c07ba1ebb2b1/triangles-1430105_1280.png') no-repeat center center fixed;
+    background: url('https://pixabay.com/get/e831b20f29f4043ed1584d05fb094197e171e0dc1eac104496f9c07daee5b2bd/triangles-1430105_1280.png') no-repeat center center fixed;
     background-size: cover;
     border: 5px solid rgb(139, 126, 211);
   }
@@ -115,7 +115,7 @@ html {
         width: 100%;
         margin-bottom: 15px;
       }
-      
+
       input[type='submit'] {
         height: 30px;
         background-color: #D8BDBD;
@@ -154,7 +154,8 @@ html {
       
       height: 100%;
       width: 100%;
-      // background-color: rgb(91, 31, 110);
+      // background-color: rgba(91, 31, 110, 0.301);
+      border-radius: 30px;
       
       h1 {
         // display: block;

@@ -3,7 +3,7 @@ const app = express();
 const router = express.Router();
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
-const mongodb = require('mongodb');
+// const mongodb = require('mongodb');
 // User model for mongo database
 
 const User = require('../model/User.js')
@@ -30,13 +30,15 @@ router.get('/api/exercise/log/:id', (req,res) => {
     const query = User.where({userId: userId})
     query.findOne( (err,user) => {
         if (err) return err;
-        if (user) {
-            // res.json(user);
+        if (user.exercises) {
+            res.json(user.exercises);
+        } else {
+            res.end('user not found / user has not logged any exercise');
         }
     });
     
     
-    res.end('end');
+    // res.end('end');
 });
 
 router.post('/api/exercise/new-user', (req,res) => {
@@ -59,7 +61,13 @@ router.post('/api/exercise/new-user', (req,res) => {
 });
 
 router.post('/api/exercise/add', (req,res) => {
+    let userId = req.params.userId;
+    let description = req.params.description;
+    let duration = req.params.duration;
+    let date = req.params.date;
+    
     res.end('end');
+
 });
 
 module.exports = router;
