@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const log = (msg) => console.log(msg);
-const shortId = require('');
+const shortId = require('shortid');
 
 const Schema = mongoose.Schema;
 
@@ -11,10 +11,14 @@ const UserSchema = new Schema({
     },
     userId: {
         type: String,
-        // unique: true,
         required: true,
         default: shortId.generate
-    }
+    },
+    exercise: [{
+        description: String,
+        duration: Number,
+        date: {}
+    }]
 });
 
 module.exports = User = mongoose.model('User', UserSchema);

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const shortid = require('shortid');
 const mongodb = require('mongodb');
 // User model for mongo database
+
 const User = require('../model/User.js')
 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
@@ -18,8 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 router.get('/api/exercise/users' , (req,res) => {
     // retrieve all users from database
     // No query passed in means "find everything"
-
-    res.end('response')
+    User.find()
+        .then(users => res.json(items))
+        .catch(err => log(err))
 });
 
 router.get('/api/exercise/log/:id', (req,res) => {
@@ -28,23 +30,34 @@ router.get('/api/exercise/log/:id', (req,res) => {
 
 router.post('/api/exercise/new-user', (req,res) => {
     // get the user name from the form
-    let username = req.body.username;
+    const username = req.body.username;
+    const query = User.where({username: username});
+    
+    query.findOne( (err,user) => {
+        if (err) return err;
+        if (user) {
+        // if the username is already in the database...
+            console.log(user);
+        } else {
+            // add username to database
+            let user = new User({username:username});
+            user.save(err => log(err))
+        }
+
+    });  
+    
     // check whether username already exists.  If so, return.  If not,
     // add username to database
-    User.findOne({username:username})
-        .then( data => {
-            if(data != null) {
-                res.end(data);
-            }
-            return 'hi';
-        })
-        .catch(err=>log(err))
+
+    // User.findOne({username});
+    
 
 
-    let userObj = {
-        username: username,
-        _id: shortid.generate()
-    }
+    // let userObj = {
+    //     username: username,
+    //     _id: shortid.generate()
+    // }
+    
     // users.push(userObj);
     // res.end(JSON.stringify(userObj));
 
