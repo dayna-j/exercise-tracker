@@ -17,10 +17,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/api/exercise/users' , (req,res) => {
+    // WORKING
     // retrieve all users from database
     // No query passed in means "find everything"
     User.find()
-        .then(users => res.json(items))
+        .then(users => res.json(users))
         .catch(err => log(err))
 });
 
@@ -29,39 +30,22 @@ router.get('/api/exercise/log/:id', (req,res) => {
 });
 
 router.post('/api/exercise/new-user', (req,res) => {
+    // WORKING
     // get the user name from the form
     const username = req.body.username;
-    const query = User.where({username: username});
+    const query = User.where({username});
     
     query.findOne( (err,user) => {
         if (err) return err;
-        if (user) {
-        // if the username is already in the database...
-            console.log(user);
+        if (user == null) {
+            // user wasn't found.  Add to database
+            let user = new User({username});
+            user.save((user=>log(`user ${username} saved to database.`)));
         } else {
-            // add username to database
-            let user = new User({username:username});
-            user.save(err => log(err))
-        }
-
+            log(`username: ${user.username} is already in the database`);
+            res.json(user);
+        }        
     });  
-    
-    // check whether username already exists.  If so, return.  If not,
-    // add username to database
-
-    // User.findOne({username});
-    
-
-
-    // let userObj = {
-    //     username: username,
-    //     _id: shortid.generate()
-    // }
-    
-    // users.push(userObj);
-    // res.end(JSON.stringify(userObj));
-
-
 });
 
 router.post('/api/exercise/add', (req,res) => {

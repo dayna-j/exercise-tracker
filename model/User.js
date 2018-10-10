@@ -14,11 +14,11 @@ const UserSchema = new Schema({
         required: true,
         default: shortId.generate
     },
-    exercise: [{
-        description: String,
-        duration: Number,
-        date: {}
-    }]
+    // exercise: [{
+    //     description: String,
+    //     duration: Number,
+    //     date: {}
+    // }]
 });
 
 module.exports = User = mongoose.model('User', UserSchema);
