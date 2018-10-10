@@ -16,8 +16,9 @@
                     <form action = "/api/exercise/new-user" method = "post">
                         <h1>Create a New User</h1>
                         <code>POST /api/exercise/new-user</code>
-                        <input name = username id='userInput' type='text' placeholder="Enter Username">
-                        <input type='submit'>
+                        <input name = 'username' id='userInput' type='text' placeholder="Enter Username">
+                        <div id='userIdDiv' class = 'hidden'><p></p></div>
+                        <input type='submit' id='userSubmit'>
                     </form>
                 </div>
             </div> 
@@ -57,7 +58,16 @@
         </div>
     </div>
 <script>
+    // let userIdPanel = document.getElementById('userIdDiv');
+    // let userSubmit = document.getElementById('userSubmit');
+    // console.log(userSubmit);
 
+    // userSubmit.addEventListener('click', event => {
+    //     // alert('y');
+    //     if(userIdPanel.classList.contains('hidden')) {
+    //         userIdPanel.classList.toggle('hidden');
+    //     }
+    // });
 </script>    
 </body>
 </html>

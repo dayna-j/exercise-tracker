@@ -26,6 +26,16 @@ router.get('/api/exercise/users' , (req,res) => {
 });
 
 router.get('/api/exercise/log/:id', (req,res) => {
+    const userId = req.params.id;
+    const query = User.where({userId: userId})
+    query.findOne( (err,user) => {
+        if (err) return err;
+        if (user) {
+            // res.json(user);
+        }
+    });
+    
+    
     res.end('end');
 });
 

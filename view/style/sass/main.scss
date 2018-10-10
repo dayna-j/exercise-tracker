@@ -108,8 +108,14 @@ html {
       input[type='text'] {
         background-color: rgb(218, 211, 205);
         padding: 5px;
-        
       }
+      #userIdDiv{
+        background-color: rgb(177, 172, 169);
+        height: 20px;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      
       input[type='submit'] {
         height: 30px;
         background-color: #D8BDBD;

@@ -86,6 +86,11 @@ body {
     .formWrapper form input[type='text'] {
       background-color: #dad3cd;
       padding: 5px; }
+    .formWrapper form #userIdDiv {
+      background-color: #b1aca9;
+      height: 20px;
+      width: 100%;
+      margin-bottom: 15px; }
     .formWrapper form input[type='submit'] {
       height: 30px;
       background-color: #D8BDBD;
