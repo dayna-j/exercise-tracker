@@ -64,7 +64,7 @@ router.post('/api/exercise/add', (req,res) => {
     let description = req.params.description;
     let duration = req.params.duration;
     let date = req.params.date;
-    
+    const query = User.where({userId});
     // ---------------
     query.findOne( (err,user) => {
         if (err) return err;
