@@ -65,6 +65,23 @@ router.post('/api/exercise/add', (req,res) => {
     let duration = req.params.duration;
     let date = req.params.date;
     
+    // ---------------
+    query.findOne( (err,user) => {
+        if (err) return err;
+        if (user == null) {
+            // user wasn't found.  Add to database
+            
+            // let user = new User({username});
+            // user.save((user=>log(`user ${username} saved to database.`)));
+        } else {
+            // user found
+            // res.json(user);
+        }        
+    });  
+
+
+
+
     res.end('end');
 
 });
