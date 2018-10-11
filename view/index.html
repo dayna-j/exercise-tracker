@@ -24,14 +24,14 @@
             </div> 
             <div class = 'panel' id='rightPanel'>
                 <div class='formWrapper'>
-                    <form action = "/api/exercise/add" method = "post">
+                    <form action = "/api/exercise/add" method = "post" id='exerciseForm'>
                         <h1>Add Exercises</h1>
                         <code>POST /api/exercise/add</code>
                         <input type='text' name='userid' placeholder="userId">
                         <input type='text' name='description' placeholder="description">
                         <input type='text' name='duration' placeholder="duration (mins)">
                         <input type='text' name='date' placeholder="date (yy-mm-dd)">
-                        <input type='submit'>
+                        <input type='submit' id='exerciseSubmit'>
                     </form>
                 </div>
             </div>
@@ -58,6 +58,7 @@
         </div>
     </div>
 <script>
+    const log = (msg) => console.log(msg);
     // let userIdPanel = document.getElementById('userIdDiv');
     // let userSubmit = document.getElementById('userSubmit');
     // console.log(userSubmit);
@@ -68,6 +69,22 @@
     //         userIdPanel.classList.toggle('hidden');
     //     }
     // });
+    const exerciseForm = document.getElementById('exerciseForm');
+    const exerciseInputs = document.querySelectorAll(' #exerciseForm input[type="text"] ');
+    log(exerciseInputs.forEach);
+    
+    exerciseInputs.forEach( input => {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    });
+
+    
+
+    const exerciseSubmit = document.getElementById('exerciseSubmit');
+    // log(exerciseSubmit);
+    // function isFormEmpty() {
+    //     let x = document.getElementById()
+    // }
+
 </script>    
 </body>
 </html>
