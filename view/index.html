@@ -16,8 +16,8 @@
                     <form action = "/api/exercise/new-user" method="post">
                         <h1>Create a New User</h1>
                         <code>POST /api/exercise/new-user</code>
-                        <input name = 'username' id='userInput' type='text' placeholder="Enter Username">
-                        <div id='userIdDiv' class = 'hidden'><p></p></div>
+                        <input name = 'username' id='userInput' type='text' placeholder="Enter Username" required>
+                        <!-- <div id='userIdDiv' class = 'hidden'><p></p></div> -->
                         <input type='submit' id='userSubmit'>
                     </form>
                 </div>
@@ -27,11 +27,11 @@
                     <form action="/api/exercise/add" method="post" id='exerciseForm'>
                         <h1>Add Exercises</h1>
                         <code>POST /api/exercise/add</code>
-                        <input type='text' name='userid' placeholder="userId">
-                        <input type='text' name='description' placeholder="description">
-                        <input type='text' name='duration' placeholder="duration (mins)">
-                        <input type='text' name='date' placeholder="date (yy-mm-dd)">
-                        <input type='submit' id='exerciseSubmit' onclick='checkInputs()'>
+                        <input type='text' name='userId' placeholder="userId" required>
+                        <input type='text' name='description' placeholder="description" required>
+                        <input type='text' name='duration' placeholder="duration (mins)" required>
+                        <input type='text' name='date' placeholder="date (dd-mm-yy)" required>
+                        <input type='submit' id='exerciseSubmit'>
                     </form>
                 </div>
             </div>
@@ -59,37 +59,6 @@
     </div>
 <script>
     const log = (msg) => console.log(msg);
-    // let userIdPanel = document.getElementById('userIdDiv');
-    // let userSubmit = document.getElementById('userSubmit');
-    // console.log(userSubmit);
-
-    // userSubmit.addEventListener('click', event => {
-    //     // alert('y');
-    //     if(userIdPanel.classList.contains('hidden')) {
-    //         userIdPanel.classList.toggle('hidden');
-    //     }
-    // });
-    const exerciseForm = document.getElementById('exerciseForm');
-    const exerciseInputs = document.querySelectorAll(' #exerciseForm input[type="text"] ');
-    // log(exerciseInputs.forEach);
-    
-    function checkInputs() {
-    exerciseInputs.forEach( input => {
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // check whether forms are empty
-        if (input.value == ''){
-            return false;
-        }
-    });
-    }
-    
-
-    const exerciseSubmit = document.getElementById('exerciseSubmit');
-    // log(exerciseSubmit);
-    // function isFormEmpty() {
-    //     let x = document.getElementById()
-    // }
-
 </script>    
 </body>
 </html>

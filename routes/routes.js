@@ -4,6 +4,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
 const mongoose = require('mongoose');
+const validator = require('validator');
 // User model for Mongo database
 const User = require('../model/User.js')
 
@@ -22,7 +23,7 @@ router.get('/api/exercise/users' , (req,res) => { // WORKING
         .catch(err => log(err))
 });
 
-router.get('/api/exercise/log/:id', (req,res) => {
+router.get('/api/exercise/log/:id', (req,res) => { // WORKING
     // :id is a route parameter.  it is attached to the request object as req.params.id
     const userId = req.params.id;
     const query = User.where({userId: userId})
@@ -41,8 +42,8 @@ router.get('/api/exercise/log/:id', (req,res) => {
     });
 });
 
-router.post('/api/exercise/new-user', (req,res) => {
-    // WORKING (get the user name from the form)
+router.post('/api/exercise/new-user', (req,res) => { // WORKING
+    // get the user name from the form
     
     // body-parser populates the request object with a body object having properties 
     // which match the names of the input fields on the exercise form.
@@ -69,28 +70,31 @@ router.post('/api/exercise/new-user', (req,res) => {
 });
 
 router.post('/api/exercise/add', (req,res) => {
-    let userId = req.params.userId;
-    let description = req.params.description;
-    let duration = req.params.duration;
-    let date = req.params.date;
-    let dateRegex = /\d\d-\d\d-\d\d/g;
 
+    const userId = req.body.userId;
+    const description = req.body.description;
+    const duration = req.body.duration;
+    const date = req.body.date;
+    
+    const dateRegex = /\d\d-\d\d-\d\d/g;
+    
+    // if (!validator.isNumeric(duration)) res.end('duration must be a number');
+    // else if 
+    
     // validate duration input
-    if ( isNaN(duration) ) {
+    if (isNaN(duration) ) {
         // duration is not a number.  reject.
         res.end('duration must be a number.')
 
     } else if (dateRegex.test(date)) {
         // validated date field input
         const currentDate = new Date(date);
-
     } else {
         // invalid date input.  reject.
-        res.end('Date invalid:  yy-mm-dd');
+        res.end('Date invalid:  mm-dd-yy');
     }
-    
+    log(userId);
     const query = User.where({userId});
-
     // ---------------
     query.findOne( (err,user) => {
         if (err) return err;
