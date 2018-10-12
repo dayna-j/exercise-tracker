@@ -81,9 +81,6 @@ router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
     log(`date: ${date}`);
     const dateRegex = /\d\d-\d\d-\d\d/g;
     
-    // if (!validator.isNumeric(duration)) res.end('duration must be a number');
-    // else if 
-    
     // validate duration input.  validator object requires all input to be a string
     if (!validator.isNumeric(duration)) {
         // handle rejection.  duration is NOT numeric and/or 
@@ -92,14 +89,21 @@ router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
         // res.end();
         // return false;
     }
+    // log(dateRegex.test(date));
     if (dateRegex.test(date)) {
         // validated date field input
         const currentDate = new Date(date);
     } else {
         // invalid date input.  create  
-        res.end('Date invalid:  mm-dd-yy');
-    }
+        const date = new Date()
+                            .toDateString()
+                            .split(' ')
+                            .filter((element,index)=>index>0)
+                            .join(' ');
 
+                            log(`date: ${date}`);
+        return res.end('Date invalid:  mm-dd-yy');
+    }
     const query = User.where({userId});
     // ---------------
     query.findOne( (err,user) => {
@@ -123,9 +127,5 @@ router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
             res.end('end');
         }        
     });  
-    
 });
-
 module.exports = router;
-
-
