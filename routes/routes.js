@@ -26,10 +26,10 @@ router.get('/api/exercise/log/:id', (req,res) => {
     // :id is a route parameter.  it is attached to the request object as req.params.id
     const userId = req.params.id;
     const query = User.where({userId: userId})
-    log(query)// const from, to;
+    // const from, to;
     query.findOne( (err,user) => {
         if (err) return err;
-        if (user.exercise.length > 0) {
+        if (user && user.exercise.length > 0) {
             // user exists && there are exercises logged for this user
             // return exercise object as json
             res.json(user.exercise);
@@ -50,20 +50,20 @@ router.post('/api/exercise/new-user', (req,res) => {
     // create a mongo database query for users with user name matching 'username'
     const query = User.where({username});
     
-    query.findOne( (err,user) => {
+    query.findOne( (err,user) => { // WORKING
         if (err) return err;
         if (user == null) {
             // user wasn't found.  
-            // create a new user from the User model.  username is the only required path
+            // create a new user from the User model.  username is the only required path.
             let user = new User({username});
             // save user to database
             user.save((user=>log(`user ${username} saved to database.`)));
-            // terminate connection with client
-            res.end();
+            // send user object back as json
+            res.json(user);
         } else {
             log(`username: ${user.username} is already in the database`);
             // user already exists in database.  returns existing user object as json.
-            res.json(user)
+            res.json(user);
         }
     });
 });
