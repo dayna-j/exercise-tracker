@@ -69,35 +69,42 @@ router.post('/api/exercise/new-user', (req,res) => { // WORKING
     });
 });
 
-router.post('/api/exercise/add', (req,res) => {
-
-    const userId = req.body.userId;
-    const description = req.body.description;
-    const duration = req.body.duration;
-    const date = req.body.date;
+router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
     
+    const userId = req.body.userId;
+    log(`userId: ${userId}`);
+    const description = req.body.description;
+    log(`description: ${description}`);
+    const duration = req.body.duration;
+    log(`duration: ${duration}`);
+    const date = req.body.date;
+    log(`date: ${date}`);
     const dateRegex = /\d\d-\d\d-\d\d/g;
     
     // if (!validator.isNumeric(duration)) res.end('duration must be a number');
     // else if 
     
-    // validate duration input
-    if (isNaN(duration) ) {
-        // duration is not a number.  reject.
-        res.end('duration must be a number.')
-
-    } else if (dateRegex.test(date)) {
+    // validate duration input.  validator object requires all input to be a string
+    if (!validator.isNumeric(duration)) {
+        // handle rejection.  duration is NOT numeric and/or 
+        log('duration is a required field and must be a number.');
+        return res.end('duration is a required field and must be a number.');
+        // res.end();
+        // return false;
+    }
+    if (dateRegex.test(date)) {
         // validated date field input
         const currentDate = new Date(date);
     } else {
-        // invalid date input.  reject.
+        // invalid date input.  create  
         res.end('Date invalid:  mm-dd-yy');
     }
-    log(userId);
+
     const query = User.where({userId});
     // ---------------
     query.findOne( (err,user) => {
         if (err) return err;
+        log(`\nuser returnd by query: ${user}\n`)
         if (user == null) {
             // user wasn't found.  return message saying user wasnt found
             res.end("User does not exist");
@@ -113,9 +120,10 @@ router.post('/api/exercise/add', (req,res) => {
                 duration,
                 currentDate
             }
+            res.end('end');
         }        
     });  
-    res.end('end');
+    
 });
 
 module.exports = router;
