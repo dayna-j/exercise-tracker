@@ -14,8 +14,7 @@ const log = msg => console.log(msg);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-router.get('/api/exercise/users' , (req,res) => {
-    // WORKING
+router.get('/api/exercise/users' , (req,res) => { // WORKING
     // retrieve all users from database
     // No query passed in means "find everything"
     User.find()
@@ -24,6 +23,7 @@ router.get('/api/exercise/users' , (req,res) => {
 });
 
 router.get('/api/exercise/log/:id', (req,res) => {
+    // :id is a route parameter.  it is attached to the request object as req.params.id
     const userId = req.params.id;
     const query = User.where({userId: userId})
     log(query)// const from, to;
@@ -31,31 +31,41 @@ router.get('/api/exercise/log/:id', (req,res) => {
         if (err) return err;
         if (user.exercise.length > 0) {
             // user exists && there are exercises logged for this user
-            // return exercises
-            // res.json(user.exercise.length > 0);
-        } else {
+            // return exercise object as json
+            res.json(user.exercise);
+        } else if (user) {
             res.end('user has not logged any exercises');
+        } else {
+            res.end('user does not exist');
         }
     });
 });
 
 router.post('/api/exercise/new-user', (req,res) => {
-    // WORKING
-    // get the user name from the form
+    // WORKING (get the user name from the form)
+    
+    // body-parser populates the request object with a body object having properties 
+    // which match the names of the input fields on the exercise form.
     const username = req.body.username;
+    // create a mongo database query for users with user name matching 'username'
     const query = User.where({username});
     
     query.findOne( (err,user) => {
         if (err) return err;
         if (user == null) {
-            // user wasn't found.  Add to database
+            // user wasn't found.  
+            // create a new user from the User model.  username is the only required path
             let user = new User({username});
+            // save user to database
             user.save((user=>log(`user ${username} saved to database.`)));
+            // terminate connection with client
+            res.end();
         } else {
             log(`username: ${user.username} is already in the database`);
-            res.json(user);
-        }        
-    });  
+            // user already exists in database.  returns existing user object as json.
+            res.json(user)
+        }
+    });
 });
 
 router.post('/api/exercise/add', (req,res) => {
@@ -73,7 +83,7 @@ router.post('/api/exercise/add', (req,res) => {
     } else if (dateRegex.test(date)) {
         // validated date field input
         const currentDate = new Date(date);
-        
+
     } else {
         // invalid date input.  reject.
         res.end('Date invalid:  yy-mm-dd');

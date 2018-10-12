@@ -9,11 +9,11 @@
 </head>
 <body>
     <div id='bg-filter'></div>
-    <div class='container' id = 'panelContainer'>
+    <div class='container' id='panelContainer'>
         <div class='row' id='row1'>
-            <div class = 'panel' id='leftPanel'>
+            <div class='panel' id='leftPanel'>
                 <div class='formWrapper'>
-                    <form action = "/api/exercise/new-user" method = "post">
+                    <form action = "/api/exercise/new-user" method="post">
                         <h1>Create a New User</h1>
                         <code>POST /api/exercise/new-user</code>
                         <input name = 'username' id='userInput' type='text' placeholder="Enter Username">
@@ -24,14 +24,14 @@
             </div> 
             <div class = 'panel' id='rightPanel'>
                 <div class='formWrapper'>
-                    <form action = "/api/exercise/add" method = "post" id='exerciseForm'>
+                    <form action="/api/exercise/add" method="post" id='exerciseForm'>
                         <h1>Add Exercises</h1>
                         <code>POST /api/exercise/add</code>
                         <input type='text' name='userid' placeholder="userId">
                         <input type='text' name='description' placeholder="description">
                         <input type='text' name='duration' placeholder="duration (mins)">
                         <input type='text' name='date' placeholder="date (yy-mm-dd)">
-                        <input type='submit' id='exerciseSubmit'>
+                        <input type='submit' id='exerciseSubmit' onclick='checkInputs()'>
                     </form>
                 </div>
             </div>
@@ -71,12 +71,17 @@
     // });
     const exerciseForm = document.getElementById('exerciseForm');
     const exerciseInputs = document.querySelectorAll(' #exerciseForm input[type="text"] ');
-    log(exerciseInputs.forEach);
+    // log(exerciseInputs.forEach);
     
+    function checkInputs() {
     exerciseInputs.forEach( input => {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // check whether forms are empty
+        if (input.value == ''){
+            return false;
+        }
     });
-
+    }
     
 
     const exerciseSubmit = document.getElementById('exerciseSubmit');
