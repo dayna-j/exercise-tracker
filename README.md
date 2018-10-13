@@ -30,10 +30,14 @@ POST  ../api/exercise/new-user creates a new user in the database.
       
       This route has 1 required parameter; username
       
-      __username__ is the name of the user in the database.      
+      username is the name of the user in the database.      
       
       ex: curl --username=dayna {url}/api/exercise/new-user
       
 POST  ../api/exercise/add
 
-      This route has 3 required parameters and 1 optional parameter
+      This route has 3 required parameters; userId, description, duration
+      
+      userId is a unique identifier for each account
+      description is a description of the exercise performed
+      duration is represents the amount of time, in minutes, that the exercise was performed
