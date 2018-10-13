@@ -17,7 +17,7 @@ const UserSchema = new Schema({
     exercise: [{
         description: String,
         duration: Number,
-        date: {}
+        date: String
     }]
 });
 module.exports = User = mongoose.model('User', UserSchema);

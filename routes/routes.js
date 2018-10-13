@@ -99,21 +99,17 @@ router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
         // return false;
     }
     // log(`dateRegex.test(date) --> ${dateRegex.test(date)}`);
-    if (dateRegex.test(date)) {
-        log(`regex validated date input: ${date}`);
-    } else {
-        // invalid date input.  create valid input with current date
+    if (!dateRegex.test(date)) {
         let todayArr = new Date().toLocaleDateString().split('/');
         let today = `${todayArr[2]}-${todayArr[0]}-${todayArr[1]}`;
         log(`\nDate input was invalid: ${date}`)
         log(`todays date: ${today}, was used instead`);
-        return res.end('Date invalid:  yyyy-mm-dd');
     }
     const query = User.where({userId});
     // ---------------
-    query.findOne( (err,user) => {
+    query.findOneAndUpdate( (err,user) => {
         if (err) return err;
-        log(`\nuser returnd by query: ${user}\n`)
+
         if (user == null) {
             // user wasn't found.  return message saying user wasnt found
             res.end("User does not exist");
@@ -122,14 +118,17 @@ router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
         } else {
             // user found
             // construct exerciseObj
-            log(`user ${user} found!`)
-            
+            log(`user ${user} found!`);
             const exerciseObj = {
                 description,
                 duration,
-                currentDate
+                date
             }
-            res.end('end');
+            log(exerciseObj);
+            user.exercise.push(exerciseObj);
+            log(user.exercise);
+            user.save();
+            res.json(exerciseObj);
         }        
     });  
 });
