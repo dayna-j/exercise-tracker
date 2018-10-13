@@ -92,8 +92,6 @@ router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
         // handle rejection.  duration is NOT numeric (handles empty case as well..)
         log('duration is a required field and must be a number.');
         return res.end('duration is a required field and must be a number.');
-        // res.end();
-        // return false;
     }
     // log(`dateRegex.test(date) --> ${dateRegex.test(date)}`);
     if (!dateRegex.test(date)) {
@@ -109,8 +107,6 @@ router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
         if (user == null) {
             // user wasn't found.  return message saying user wasnt found
             res.end("User does not exist");
-            // let user = new User({username});
-            // user.save((user=>log(`user ${username} saved to database.`)));
         } else {
             // user found
             // construct exerciseObj
