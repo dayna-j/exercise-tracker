@@ -15,6 +15,13 @@ const log = msg => console.log(msg);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// API route map
+
+// GET   /api/exercise/users
+// GET   /api/exercise/log/:id
+// POST  /api/exercise/new-user
+// POST  /api/exercise/add
+
 router.get('/api/exercise/users' , (req,res) => { // WORKING
     // retrieve all users from database
     // No query passed in means "find everything"
@@ -71,38 +78,50 @@ router.post('/api/exercise/new-user', (req,res) => { // WORKING
 
 router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
     
+    // getting inpud values from index.html form..
     const userId = req.body.userId;
-    log(`userId: ${userId}`);
+    // log(`userId: ${userId}`);
     const description = req.body.description;
-    log(`description: ${description}`);
+    // log(`description: ${description}`);
     const duration = req.body.duration;
-    log(`duration: ${duration}`);
-    const date = req.body.date;
-    log(`date: ${date}`);
-    const dateRegex = /\d\d-\d\d-\d\d/g;
+    // log(`duration: ${duration}`);
+    let date = req.body.date;
+    log(`date from user input: ${date}`);
+    // for pattern:  yyyy-mm-dd
+    const dateRegex = /\d\d\d\d-\d\d-\d\d/g;
     
     // validate duration input.  validator object requires all input to be a string
     if (!validator.isNumeric(duration)) {
-        // handle rejection.  duration is NOT numeric and/or 
+        // handle rejection.  duration is NOT numeric (handles empty case as well..)
         log('duration is a required field and must be a number.');
         return res.end('duration is a required field and must be a number.');
         // res.end();
         // return false;
     }
-    // log(dateRegex.test(date));
+    // log(`dateRegex.test(date) --> ${dateRegex.test(date)}`);
     if (dateRegex.test(date)) {
         // validated date field input
-        const currentDate = new Date(date);
+        let dateArr = date.split('-');
+        log(`dateArr: ${dateArr}`);
+        date = new Date(`${dateArr[0]}/${dateArr[1]}/${dateArr[2]}`);
+        log(`regex validated date input: ${date}`);
     } else {
-        // invalid date input.  create  
-        const date = new Date()
-                            .toDateString()
-                            .split(' ')
-                            .filter((element,index)=>index>0)
-                            .join(' ');
+        // invalid date input.  create valid input with current date
 
-                            log(`date: ${date}`);
-        return res.end('Date invalid:  mm-dd-yy');
+        let dateArr
+
+
+
+
+        // let year, day, month;
+        // log('date input invalid');
+        // let date = new Date();
+        // year = date.getFullYear().toString().split('').filter((element,index)=>index>1).join('');
+        // month = date.getMonth()+1;
+        // day = date.getDate();
+        // date = `${year}-${month}-${day}`;
+        // log(date);
+        return res.end('Date invalid:  yyyy-mm-dd');
     }
     const query = User.where({userId});
     // ---------------
