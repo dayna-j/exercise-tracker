@@ -41,3 +41,8 @@ POST  ../api/exercise/add
       userId is a unique identifier for each account
       description is a description of the exercise performed
       duration is represents the amount of time, in minutes, that the exercise was performed
+      
+      This route has 1 optional parameter; date
+      
+      date represents the date that the exercise was performed on.
+      If not supplied by the user, the server will automatically include the current time.
