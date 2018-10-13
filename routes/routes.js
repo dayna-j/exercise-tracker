@@ -34,7 +34,7 @@ router.get('/api/exercise/log/:id', (req,res) => { // WORKING
     // :id is a route parameter.  it is attached to the request object as req.params.id
     const userId = req.params.id;
     const query = User.where({userId: userId})
-    // const from, to;
+    // const from, to;  
     query.findOne( (err,user) => {
         if (err) return err;
         if (user && user.exercise.length > 0) {
@@ -78,7 +78,7 @@ router.post('/api/exercise/new-user', (req,res) => { // WORKING
 
 router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
     
-    // getting inpud values from index.html form..
+    // getting input values from index.html form..
     const userId = req.body.userId;
     // log(`userId: ${userId}`);
     const description = req.body.description;
@@ -124,9 +124,9 @@ router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
                 duration,
                 date
             }
-            log(exerciseObj);
+            // log(exerciseObj);
             user.exercise.push(exerciseObj);
-            log(user.exercise);
+            // log(user.exercise);
             user.save();
             res.json(exerciseObj);
         }        
