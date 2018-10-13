@@ -19,15 +19,10 @@ restFUL API route map:
 *POST  /api/exercise/add
 
 ------------------------------------------------------------------------
-GET   ../api/exercise/users
 
 GET ../api/exercise/users retrieves a complete list of users in the database.
 
-GET   ../api/exercise/log/:id
-
 GET   ../api/exercise/log/:id queries the database by userId and returns the appropriate user.
-
-POST  ../api/exercise/new-user
 
 POST  ../api/exercise/new-user creates a new user in the database.
 
