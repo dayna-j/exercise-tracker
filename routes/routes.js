@@ -77,7 +77,6 @@ router.post('/api/exercise/new-user', (req,res) => { // WORKING
 });
 
 router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
-    
     // getting input values from index.html form..
     const userId = req.body.userId;
     // log(`userId: ${userId}`);
@@ -89,7 +88,6 @@ router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
     log(`date from user input: ${date}`);
     // for pattern:  yyyy-mm-dd
     const dateRegex = /\d\d\d\d-\d\d-\d\d/g;
-    
     // validate duration input.  validator object requires all input to be a string
     if (!validator.isNumeric(duration)) {
         // handle rejection.  duration is NOT numeric (handles empty case as well..)
