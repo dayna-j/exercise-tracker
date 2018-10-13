@@ -38,7 +38,7 @@ POST  ../api/exercise/new-user creates a new user in the database.
       
       ex: curl --username=dayna {url}/api/exercise/new-user
       
-POST  ../api/exercise/add
+POST  ../api/exercise/add updates an existing user in the database with new exercise data
 
       This route has 3 required parameters; userId, description, duration
       
