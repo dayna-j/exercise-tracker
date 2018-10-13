@@ -100,27 +100,13 @@ router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
     }
     // log(`dateRegex.test(date) --> ${dateRegex.test(date)}`);
     if (dateRegex.test(date)) {
-        // validated date field input
-        let dateArr = date.split('-');
-        log(`dateArr: ${dateArr}`);
-        date = new Date(`${dateArr[0]}/${dateArr[1]}/${dateArr[2]}`);
         log(`regex validated date input: ${date}`);
     } else {
         // invalid date input.  create valid input with current date
-
-        let dateArr
-
-
-
-
-        // let year, day, month;
-        // log('date input invalid');
-        // let date = new Date();
-        // year = date.getFullYear().toString().split('').filter((element,index)=>index>1).join('');
-        // month = date.getMonth()+1;
-        // day = date.getDate();
-        // date = `${year}-${month}-${day}`;
-        // log(date);
+        let todayArr = new Date().toLocaleDateString().split('/');
+        let today = `${todayArr[2]}-${todayArr[0]}-${todayArr[1]}`;
+        log(`\nDate input was invalid: ${date}`)
+        log(`todays date: ${today}, was used instead`);
         return res.end('Date invalid:  yyyy-mm-dd');
     }
     const query = User.where({userId});
