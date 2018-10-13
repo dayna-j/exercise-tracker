@@ -11,7 +11,7 @@ exercise-tracker can be utilized in 2 different ways:
 1)  Through the user interface provided at the live project link above.
 2)  Through its restful API.
 
-restFUL API route map:
+### restFUL API route map:
 
 * GET   /api/exercise/users
 * GET   /api/exercise/log/:id
