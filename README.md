@@ -22,9 +22,13 @@ exercise-tracker can be utilized in 2 different ways:
 
 GET   ../api/exercise/users retrieves a complete list of users in the database.
 
+      ex: curl {url}/api/exercise/users
+
 GET   ../api/exercise/log/:id queries the database by userId and returns the appropriate user.
       
       where :id is a route parameter representing the userId of a user in the database
+      
+      ex: curl {url}/api/exercise/log/sfA2DaF4
 
 POST  ../api/exercise/new-user creates a new user in the database.
       
