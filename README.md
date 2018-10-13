@@ -4,7 +4,9 @@ Live project link:  https://exercise-tracking.herokuapp.com/
 
 exercise-tracker is a full stack JavaScript application built with Node, Express & MongoDB.  It uses Mongoose for data modeling.
 I have built exercise-tracker to conform to the MVC design pattern.  It features a modular routing scheme, made possible by
-Express' Router object.  
+Express' Router object.
+
+exercise-tracker is a convienient way to keep track of your physical activity.  It allows you to create user objects which are persisted into a database.  These user objects can be used to store, update and retrieve exercise information.
 
 exercise-tracker can be utilized in 2 different ways:
 
