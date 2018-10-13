@@ -57,7 +57,6 @@ router.post('/api/exercise/new-user', (req,res) => { // WORKING
     const username = req.body.username;
     // create a mongo database query for users with user name matching 'username'
     const query = User.where({username});
-    
     query.findOne( (err,user) => { // WORKING
         if (err) return err;
         if (user == null) {
@@ -107,7 +106,6 @@ router.post('/api/exercise/add', (req,res) => { // WORKING ON THIS ROUTE
     // ---------------
     query.findOneAndUpdate( (err,user) => {
         if (err) return err;
-
         if (user == null) {
             // user wasn't found.  return message saying user wasnt found
             res.end("User does not exist");
