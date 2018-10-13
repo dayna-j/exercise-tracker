@@ -47,4 +47,4 @@ POST  ../api/exercise/add
       date represents the date that the exercise was performed on.
       If not supplied by the user, the server will automatically include the current time.
       
-      ex curl --data userId=sfA2DaF4 --data description=Situps --data duration=15 --data date==2018-10-13 localhost:3000/api/exercise/add
+      ex curl --data userId=sfA2DaF4 --data description=Situps --data duration=15 --data date==2018-10-13 {url}/api/exercise/add
