@@ -13,10 +13,10 @@ exercise-tracker can be utilized in 2 different ways:
 
 restFUL API route map:
 
-*GET   /api/exercise/users
-*GET   /api/exercise/log/:id
-*POST  /api/exercise/new-user
-*POST  /api/exercise/add
+* GET   /api/exercise/users
+* GET   /api/exercise/log/:id
+* POST  /api/exercise/new-user
+* POST  /api/exercise/add
 
 ------------------------------------------------------------------------
 
