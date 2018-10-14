@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const log = (msg) => console.log(msg);
 const shortId = require('shortid');
 const Schema = mongoose.Schema;
