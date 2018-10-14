@@ -21,11 +21,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(require('./routes/routes.js'));
 
-app.use('/', express.static(process.cwd() + '/view'));
+// app.use('/', express.static(process.cwd() + '/view'));
+app.use('/', express.static(`${process.cwd()}/view`));
 
 // serve static assets
-app.get('/', (req,res) => {
-  res.sendFile(process.cwd() + '/view/index.html');
+app.get('/', (req, res) => {
+//   res.sendFile(process.cwd() + '/view/index.html');
+  res.sendFile(`${process.cwd()}/view/index.html`);
 });
 
 mongoose.connect(db, { useNewUrlParser: true })
